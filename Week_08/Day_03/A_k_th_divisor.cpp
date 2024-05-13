@@ -1,0 +1,26 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    long long n, k;
+    cin >> n >> k;
+
+    vector<long long> divisors;
+    for (long long i = 1; i <= sqrt(n); ++i) {
+        if (n % i == 0) {
+            divisors.push_back(i);
+            if (i != n / i) {
+                divisors.push_back(n / i);
+            }
+        }
+    }
+
+    if (divisors.size() < k) {
+        cout << "-1" << endl;
+    } else {
+        sort(divisors.begin(), divisors.end());
+        cout << divisors[k - 1] << endl;
+    }
+
+    return 0;
+}
